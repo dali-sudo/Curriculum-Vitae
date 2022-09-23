@@ -8,19 +8,18 @@ import android.widget.SeekBar
 import android.text.TextUtils
 import android.widget.Toast
 import android.util.Patterns.EMAIL_ADDRESS
-import android.util.Log
+
 
 
 
 class MainActivity : AppCompatActivity() {
-    var test = false
-    var test2=false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         val submitButton = findViewById<Button>(R.id.next)
-
+        val resetButton =findViewById<Button>(R.id.reset)
         val Name = findViewById<EditText>(R.id.NametextInputEditLayout)
         val Age = findViewById<EditText>(R.id.AgeTextInput)
         val Email = findViewById<EditText>(R.id.EmailInputText)
@@ -50,8 +49,20 @@ class MainActivity : AppCompatActivity() {
                 checkBest(map)
                 checkWorse(map)
                 checkAverage(map)
+
             }
 
+
+
+        }
+
+        resetButton.setOnClickListener{
+            Name.getText().clear()
+            Email.getText().clear()
+            Age.getText().clear()
+            findViewById<SeekBar>(R.id.IOS).setProgress(0)
+            findViewById<SeekBar>(R.id.Android).setProgress(0)
+            findViewById<SeekBar>(R.id.Flutter).setProgress(0)
 
 
         }
